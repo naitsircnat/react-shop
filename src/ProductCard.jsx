@@ -1,6 +1,9 @@
 import React from "react";
 
 export default function ProductCard(props) {
+  const buttonHandler = () => {
+    alert("Button clicked");
+  };
   return (
     <>
       <div className="col-12 col-md-6 col-lg-3">
@@ -13,7 +16,7 @@ export default function ProductCard(props) {
             <p className="card-text">
               <p>{props.productDescript}</p>
             </p>
-            <a href="#" className="btn btn-success">
+            <a href="#" className="btn btn-success" onClick={buttonHandler}>
               Add to cart
             </a>
           </div>
