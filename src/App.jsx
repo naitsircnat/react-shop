@@ -1,6 +1,6 @@
 import React from "react";
 import "./styles.css";
-import cardImage from "./assets/card-image.jpg";
+import ProductCard from "./ProductCard.jsx";
 
 export default function App() {
   return (
@@ -60,137 +60,50 @@ export default function App() {
         <h2>Our Coffee Blends</h2>
 
         <div className="row gy-3">
-          <div className="col-12 col-md-6 col-lg-3">
-            <div className="card">
-              <img src={cardImage} className="card-img-top" />
-              <div className="card-body">
-                <h6>$18.99</h6>
-
-                <h5 className="card-title">Golden Sunrise Blend</h5>
-                <p className="card-text">
-                  <p>
-                    Awaken your senses with the Golden Sunrise Blend, a medium
-                    roast crafted from 100% Arabica beans sourced from the
-                    highlands of Colombia.
-                  </p>
-                </p>
-                <a href="#" className="btn btn-success">
-                  Add to cart
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-12 col-md-6 col-lg-3">
-            <div className="card">
-              <img src={cardImage} className="card-img-top" />
-              <div className="card-body">
-                <h6>$18.99</h6>
-
-                <h5 className="card-title">Golden Sunrise Blend</h5>
-                <p className="card-text">
-                  <p>
-                    Awaken your senses with the Golden Sunrise Blend, a medium
-                    roast crafted from 100% Arabica beans sourced from the
-                    highlands of Colombia.
-                  </p>
-                </p>
-                <a href="#" className="btn btn-success">
-                  Add to cart
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-12 col-md-6 col-lg-3">
-            <div className="card">
-              <img src={cardImage} className="card-img-top" />
-              <div className="card-body">
-                <h6>$18.99</h6>
-
-                <h5 className="card-title">Golden Sunrise Blend</h5>
-                <p className="card-text">
-                  <p>
-                    Awaken your senses with the Golden Sunrise Blend, a medium
-                    roast crafted from 100% Arabica beans sourced from the
-                    highlands of Colombia.
-                  </p>
-                </p>
-                <a href="#" className="btn btn-success">
-                  Add to cart
-                </a>
-              </div>
-            </div>
-          </div>
+          <ProductCard
+            imageUrl="card-image.jpg"
+            price="18.99"
+            productName="test"
+            productDescript="hello"
+          />
+          <ProductCard
+            imageUrl="card-image.jpg"
+            price="18.99"
+            productName="test"
+            productDescript="hello"
+          />
+          <ProductCard
+            imageUrl="card-image.jpg"
+            price="18.99"
+            productName="test"
+            productDescript="hello"
+          />
         </div>
       </section>
+
       {/* tea */}
       <section className="container my-5 px-lg-1">
         <h2>Our Tea Blends</h2>
 
         <div className="row gy-3">
-          <div className="col-12 col-md-6 col-lg-3">
-            <div className="card">
-              <img src={cardImage} className="card-img-top" />
-              <div className="card-body">
-                <h6>$18.99</h6>
-
-                <h5 className="card-title">Golden Sunrise Blend</h5>
-                <p className="card-text">
-                  <p>
-                    Awaken your senses with the Golden Sunrise Blend, a medium
-                    roast crafted from 100% Arabica beans sourced from the
-                    highlands of Colombia.
-                  </p>
-                </p>
-                <a href="#" className="btn btn-success">
-                  Add to cart
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-12 col-md-6 col-lg-3">
-            <div className="card">
-              <img src={cardImage} className="card-img-top" />
-              <div className="card-body">
-                <h6>$18.99</h6>
-
-                <h5 className="card-title">Golden Sunrise Blend</h5>
-                <p className="card-text">
-                  <p>
-                    Awaken your senses with the Golden Sunrise Blend, a medium
-                    roast crafted from 100% Arabica beans sourced from the
-                    highlands of Colombia.
-                  </p>
-                </p>
-                <a href="#" className="btn btn-success">
-                  Add to cart
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div className="col-12 col-md-6 col-lg-3">
-            <div className="card">
-              <img src={cardImage} className="card-img-top" />
-              <div className="card-body">
-                <h6>$18.99</h6>
-
-                <h5 className="card-title">Golden Sunrise Blend</h5>
-                <p className="card-text">
-                  <p>
-                    Awaken your senses with the Golden Sunrise Blend, a medium
-                    roast crafted from 100% Arabica beans sourced from the
-                    highlands of Colombia.
-                  </p>
-                </p>
-                <a href="#" className="btn btn-success">
-                  Add to cart
-                </a>
-              </div>
-            </div>
-          </div>
+          <ProductCard
+            imageUrl="card-image.jpg"
+            price="18.99"
+            productName="test"
+            productDescript="hello"
+          />
+          <ProductCard
+            imageUrl="card-image.jpg"
+            price="18.99"
+            productName="test"
+            productDescript="hello"
+          />
+          <ProductCard
+            imageUrl="card-image.jpg"
+            price="18.99"
+            productName="test"
+            productDescript="hello"
+          />
         </div>
       </section>
       {/* footer */}
@@ -205,5 +118,5 @@ export default function App() {
 
 /** 
 TO DO
-- toggle for nav bar
+- toggle for nav bar using react-bootstrap
 */
