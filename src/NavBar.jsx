@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link, useLocation } from "wouter";
 
 export default function NavBar() {
   const [isNavBarShowing, setNavBarShowing] = useState(false);
@@ -7,13 +8,15 @@ export default function NavBar() {
     setNavBarShowing(!isNavBarShowing);
   };
 
+  const [location] = useLocation();
+
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
+          <Link className="navbar-brand" href="/">
             The Artisan Cup
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -32,29 +35,33 @@ export default function NavBar() {
           >
             <ul className="navbar-nav">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">
-                  Home
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Features
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Pricing
-                </a>
-              </li>
-              <li className="nav-item">
-                <a
-                  className="nav-link disabled"
-                  href="#"
-                  tabindex="-1"
-                  aria-disabled="true"
+                <Link
+                  className={`nav-link ${location === "/" ? "active" : ""}`}
+                  aria-current="page"
+                  href="/"
                 >
-                  Disabled
-                </a>
+                  Home
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  className={`nav-link ${
+                    location === "/products" ? "active" : ""
+                  }`}
+                  href="/products"
+                >
+                  Products
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  className={`nav-link ${
+                    location === "/register" ? "active" : ""
+                  }`}
+                  href="/register"
+                >
+                  Register
+                </Link>
               </li>
             </ul>
           </div>

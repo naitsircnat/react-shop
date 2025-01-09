@@ -1,7 +1,7 @@
 import React from "react";
 import ProductCard from "./ProductCard.jsx";
 
-export default function MainPage() {
+export default function HomePage() {
   return (
     <>
       {/* hero */}
