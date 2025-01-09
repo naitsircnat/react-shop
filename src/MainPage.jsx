@@ -1,26 +1,14 @@
-import React, { useState } from "react";
-import "./styles.css";
+import React from "react";
 import ProductCard from "./ProductCard.jsx";
-import NavBar from "./NavBar.jsx";
-import MainPage from "./MainPage.jsx";
 
-export default function App() {
-  // const [isNavBarShowing, setNavBarShowing] = useState(false);
-
-  // const toggleNavBar = () => {
-  //   setNavBarShowing(!isNavBarShowing);
-  // };
-
+export default function MainPage() {
   return (
     <>
-      {/* nav bar */}
-
-      <NavBar />
-
-      {/* main page */}
-      {/* <section className="container-fluid" id="hero">
+      {/* hero */}
+      <section className="container-fluid" id="hero">
         <p className="display-3">The Artisan Cup</p>
       </section>
+      {/* coffee */}
       <section className="container my-5 px-lg-1">
         <h2>Our Coffee Blends</h2>
 
@@ -46,6 +34,7 @@ export default function App() {
         </div>
       </section>
 
+      {/* tea */}
       <section className="container my-5 px-lg-1">
         <h2>Our Tea Blends</h2>
 
@@ -69,20 +58,7 @@ export default function App() {
             productDescript="hello"
           />
         </div>
-      </section> */}
-
-      <MainPage />
-      {/* footer */}
-      <footer className="bg-dark text-white text-center py-3">
-        <div className="container">
-          <p>&copy; 2025 The Artisan Cup. All rights reserved.</p>
-        </div>
-      </footer>
+      </section>
     </>
   );
 }
-
-/** 
-TO DO
-- toggle for nav bar using react-bootstrap
-*/
