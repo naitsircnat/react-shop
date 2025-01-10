@@ -36,7 +36,11 @@ function Register() {
   return (
     <div className="container mt-5">
       <h1>Register</h1>
-      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={handleSubmit}
+      >
         {(formik) => (
           <Form>
             <div className="mb-3">
@@ -49,6 +53,9 @@ function Register() {
                 id="name"
                 name="name"
               />
+              {formik.errors.name && formik.touched.name ? (
+                <div className="text-danger">{formik.errors.name}</div>
+              ) : null}
             </div>
             <div className="mb-3">
               <label htmlFor="email" className="form-label">
@@ -60,6 +67,9 @@ function Register() {
                 id="email"
                 name="email"
               />
+              {formik.errors.email && formik.touched.email ? (
+                <div className="text-danger">{formik.errors.email}</div>
+              ) : null}
             </div>
             <div className="mb-3">
               <label htmlFor="password" className="form-label">
@@ -71,6 +81,9 @@ function Register() {
                 id="password"
                 name="password"
               />
+              {formik.errors.password && formik.touched.password ? (
+                <div className="text-danger">{formik.errors.password}</div>
+              ) : null}
             </div>
             <div className="mb-3">
               <label htmlFor="confirmPassword" className="form-label">
@@ -82,6 +95,12 @@ function Register() {
                 id="confirmPassword"
                 name="confirmPassword"
               />
+              {formik.errors.confirmPassword &&
+              formik.touched.confirmPassword ? (
+                <div className="text-danger">
+                  {formik.errors.confirmPassword}
+                </div>
+              ) : null}
             </div>
             <div className="mb-3">
               <label className="form-label">Salutation</label>
@@ -122,6 +141,9 @@ function Register() {
                     Mrs
                   </label>
                 </div>
+                {formik.errors.salutation && formik.touched.salutation ? (
+                  <div className="text-danger">{formik.errors.salutation}</div>
+                ) : null}
               </div>
             </div>
             <div className="mb-3">
@@ -162,6 +184,9 @@ function Register() {
                 <option value="in">Indonesia</option>
                 <option value="th">Thailand</option>
               </Field>
+              {formik.errors.country && formik.touched.country ? (
+                <div className="text-danger">{formik.errors.country}</div>
+              ) : null}
             </div>
             <button
               type="submit"
