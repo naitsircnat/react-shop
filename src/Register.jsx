@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
+import axios from "axios";
+import { useLocation } from "wouter";
 
 const validationSchema = Yup.object({
   name: Yup.string().required("Name is required"),
@@ -28,9 +30,25 @@ function Register() {
     country: "",
   };
 
-  const handleSubmit = (values, formikHelpers) => {
-    console.log("Form values:", values);
-    formikHelpers.setSubmitting(false);
+  const [, setLocation] = useLocation();
+  const [showSuccess, setShowSuccess] = useState(false);
+
+  const handleSubmit = async (values, formikHelpers) => {
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/register`,
+        values
+      );
+      console.log("Registration successful:", response.data);
+      setLocation("/");
+    } catch (error) {
+      console.error(
+        "Registration failed:",
+        error.response?.data || error.message
+      );
+    } finally {
+      formikHelpers.setSubmitting(false);
+    }
   };
 
   return (
@@ -177,7 +195,12 @@ function Register() {
               <label htmlFor="country" className="form-label">
                 Country
               </label>
-              <Field as="select" className="form-select" id="country">
+              <Field
+                as="select"
+                className="form-select"
+                id="country"
+                name="country"
+              >
                 <option value="">Select Country</option>
                 <option value="sg">Singapore</option>
                 <option value="my">Malaysia</option>
