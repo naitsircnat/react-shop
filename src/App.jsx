@@ -5,6 +5,7 @@ import HomePage from "./HomePage.jsx";
 import Products from "./Products.jsx";
 import Register from "./Register.jsx";
 import { Route, Switch } from "wouter";
+import { useFlashMessage } from "./FlashMessageStore.jsx";
 
 export default function App() {
   return (

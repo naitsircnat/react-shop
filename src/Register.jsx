@@ -3,6 +3,7 @@ import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { useLocation } from "wouter";
+import { useFlashMessage } from "./FlashMessageStore";
 
 const validationSchema = Yup.object({
   name: Yup.string().required("Name is required"),
@@ -40,14 +41,17 @@ function Register() {
         values
       );
       console.log("Registration successful:", response.data);
+      showMessage("Registration successful!", "success");
       setLocation("/");
     } catch (error) {
       console.error(
         "Registration failed:",
         error.response?.data || error.message
       );
+      showMessage("Registration failed. Please try again", "error");
     } finally {
       formikHelpers.setSubmitting(false);
+      setLocation("/");
     }
   };
 
