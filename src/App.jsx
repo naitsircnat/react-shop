@@ -1,16 +1,38 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./styles.css";
 import NavBar from "./NavBar.jsx";
 import HomePage from "./HomePage.jsx";
 import Products from "./Products.jsx";
 import Register from "./Register.jsx";
 import { Route, Switch } from "wouter";
-import { useFlashMessage } from "./FlashMessageStore.jsx";
+import { useFlashMessage } from "./FlashMessageStore";
 
 export default function App() {
+  const { getMessage, clearMessage } = useFlashMessage();
+
+  const flashMessage = getMessage();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      clearMessage();
+    }, 3000);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [flashMessage]);
+
   return (
     <>
       <NavBar />
+      {flashMessage.message && (
+        <div
+          className={`alert alert-${flashMessage.type} text-center flash-alert`}
+          role="alert"
+        >
+          {flashMessage.message}
+        </div>
+      )}
       <Switch>
         <Route path="/" component={HomePage} />
         <Route path="/products" component={Products} />

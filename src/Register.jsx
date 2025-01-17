@@ -34,6 +34,8 @@ function Register() {
   const [, setLocation] = useLocation();
   const [showSuccess, setShowSuccess] = useState(false);
 
+  const { showMessage } = useFlashMessage();
+
   const handleSubmit = async (values, formikHelpers) => {
     try {
       const response = await axios.post(
