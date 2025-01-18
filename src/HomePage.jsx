@@ -23,12 +23,14 @@ export default function HomePage() {
 
     for (let product of featuredProducts) {
       productCards.push(
-        <ProductCard
-          imageUrl={product.image}
-          price={product.price}
-          productName={product.name}
-          productDescript={product.description}
-        />
+        <div key={product.id} className="col-12 col-md-6 col-lg-3">
+          <ProductCard
+            imageUrl={product.image}
+            price={product.price}
+            productName={product.name}
+            productDescript={product.description}
+          />
+        </div>
       );
     }
 
@@ -54,12 +56,14 @@ export default function HomePage() {
 
         <div className="row gy-3">
           {featuredProducts.map((product) => (
-            <ProductCard
-              imageUrl={product.image}
-              price={product.price}
-              productName={product.name}
-              productDescript={product.description}
-            />
+            <div key={product.id} className="col-12 col-md-6 col-lg-3">
+              <ProductCard
+                imageUrl={product.image}
+                price={product.price}
+                productName={product.name}
+                productDescript={product.description}
+              />
+            </div>
           ))}
         </div>
       </section>
