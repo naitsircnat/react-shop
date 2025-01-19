@@ -63,6 +63,14 @@ export default function NavBar() {
                   Register
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link
+                  href="/cart"
+                  className={`nav-link ${location === "/cart" ? "active" : ""}`}
+                >
+                  Cart
+                </Link>
+              </li>
             </ul>
           </div>
         </div>

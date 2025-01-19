@@ -13,9 +13,7 @@ export default function ProductCard(props) {
           <h6>${props.price}</h6>
 
           <h5 className="card-title">{props.productName}</h5>
-          <p className="card-text">
-            <p>{props.productDescript}</p>
-          </p>
+          <p className="card-text">{props.productDescript}</p>
           <a href="#" className="btn btn-success" onClick={buttonHandler}>
             Add to cart
           </a>
