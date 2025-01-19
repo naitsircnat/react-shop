@@ -1,4 +1,5 @@
 import { atom, useAtom } from "jotai";
+import Immutable from "seamless-immutable";
 
 const initialCart = [
   {
@@ -24,8 +25,31 @@ export const useCart = () => {
       .toFixed(2);
   };
 
+  const addToCart = (product) => {
+    setCart((currentCart) => {
+      const existingItemIndex = findIndex(
+        // what/where exactly is product.product_id referencing?
+        (i) => i.product_id === product.product_id
+      );
+
+      if (existingItemIndex !== -1) {
+        let newQuantity = cart[existingItemIndex].quantity + 1;
+
+        const modifiedCart = currentCart.setIn(
+          [existingItemIndex, quantity],
+          newQuantity
+        );
+
+        return modifiedCart;
+      } else {
+        return currentCart.concat({ ...product, quantity: 1 });
+      }
+    });
+  };
+
   return {
     cart,
     getCartTotal,
+    addToCart,
   };
 };
