@@ -28,7 +28,6 @@ export const useCart = () => {
   const addToCart = (product) => {
     setCart((currentCart) => {
       const existingItemIndex = findIndex(
-        // what/where exactly is product.product_id referencing?
         (i) => i.product_id === product.product_id
       );
 

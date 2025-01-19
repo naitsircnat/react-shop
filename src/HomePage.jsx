@@ -8,7 +8,7 @@ export default function HomePage() {
   useEffect(() => {
     const fetchFeaturedProducts = async () => {
       try {
-        const response = await axios.get("/featured.json");
+        const response = await axios.get("featured.json");
         setFeaturedProducts(response.data);
       } catch (error) {
         console.error("Error fetching products:", error);
