@@ -5,13 +5,6 @@ import { useFlashMessage } from "./FlashMessageStore.js";
 import { useCart } from "./CartStore.js";
 import { useLocation } from "wouter";
 
-/*
-- import required components for flashMessage, cart atom and wouter; x
-- Create button handle for add to cart
-- Add prop variable to card component 
-- Add message
-*/
-
 export default function Products() {
   const [products, setProducts] = useState([]);
   const { addToCart } = useCart();

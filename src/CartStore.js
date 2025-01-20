@@ -3,8 +3,7 @@ import Immutable from "seamless-immutable";
 
 const initialCart = Immutable([
   {
-    id: 1,
-    product_id: 1,
+    product_id: 5,
     quantity: 10,
     productName: "Organic Green Tea",
     price: 12.99,
@@ -27,28 +26,48 @@ export const useCart = () => {
 
   const addToCart = (product) => {
     setCart((currentCart) => {
-      const existingItemIndex = cart.findIndex(
+      const existingItemIndex = currentCart.findIndex(
         (i) => i.product_id === product.product_id
       );
 
       if (existingItemIndex !== -1) {
         let newQuantity = cart[existingItemIndex].quantity + 1;
 
-        const modifiedCart = currentCart.setIn(
-          [existingItemIndex, "quantity"],
-          newQuantity
-        );
-
-        return modifiedCart;
+        return currentCart.setIn([existingItemIndex, "quantity"], newQuantity);
       } else {
         return currentCart.concat({ ...product, quantity: 1 });
       }
     });
   };
 
+  const modifyQty = (productId, newQuantity) => {
+    setCart((currentCart) => {
+      const existingItemIndex = currentCart.findIndex(
+        (i) => productId === i.product_id
+      );
+
+      if (existingItemIndex !== -1) {
+        if (newQuantity <= 0) {
+          return currentCart.filter((i) => i.product_id != productId);
+        } else {
+          return currentCart.setIn(
+            [existingItemIndex, "quantity"],
+            newQuantity
+          );
+        }
+      }
+    });
+  };
+
+  /*
+  - Add modifycart function with the custom hook
+  - Add the button and relevant linkage to cart item
+  */
+
   return {
     cart,
     getCartTotal,
     addToCart,
+    modifyQty,
   };
 };

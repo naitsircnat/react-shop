@@ -2,7 +2,7 @@ import React from "react";
 import { useCart } from "./CartStore";
 
 const ShoppingCart = () => {
-  const { cart, getCartTotal } = useCart();
+  const { cart, getCartTotal, modifyQty } = useCart();
 
   return (
     <div className="container mt-4">
@@ -19,7 +19,26 @@ const ShoppingCart = () => {
               >
                 <div>
                   <h5>{item.productName}</h5>
-                  <p>Quantity: {item.quantity}</p>
+                  <div className="d-flex align-items-center">
+                    <button
+                      className="btn btn-sm btn-secondary me-2"
+                      onClick={() => {
+                        modifyQty(item.product_id, item.quantity - 1);
+                      }}
+                    >
+                      -
+                    </button>
+
+                    <p className="mb-0">Quantity: {item.quantity}</p>
+                    <button
+                      className="btn btn-sm btn-secondary ms-2"
+                      onClick={() => {
+                        modifyQty(item.product_id, item.quantity + 1);
+                      }}
+                    >
+                      +
+                    </button>
+                  </div>
                 </div>
                 <span>${(item.price * item.quantity).toFixed(2)}</span>
               </li>
