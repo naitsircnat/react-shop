@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from "react";
 import ProductCard from "./ProductCard.jsx";
 import axios from "axios";
-import { flashMessageAtom, useFlashMessage } from "./FlashMessageStore.js";
-import { cartAtom, useCart } from "./CartStore.js";
+import { useFlashMessage } from "./FlashMessageStore.js";
+import { useCart } from "./CartStore.js";
 import { useLocation } from "wouter";
 
 /*
 - import required components for flashMessage, cart atom and wouter; x
 - Create button handle for add to cart
 - Add prop variable to card component 
+- Add message
 */
 
 export default function Products() {
   const [products, setProducts] = useState([]);
+  const { addToCart } = useCart();
+  const [, setLocation] = useLocation();
+  const { showMessage } = useFlashMessage();
 
   useEffect(() => {
     const getProducts = async () => {
@@ -23,7 +27,7 @@ export default function Products() {
     getProducts();
   }, []);
 
-  const addToCartHandle = () => {
+  const addToCartHandle = (product) => {
     addToCart({
       product_id: product.id,
       productName: product.name,
@@ -31,6 +35,8 @@ export default function Products() {
       imageUrl: product.image,
       description: product.description,
     });
+    showMessage("Item added to cart!", "success");
+    setLocation("/cart");
   };
 
   return (
@@ -46,7 +52,9 @@ export default function Products() {
                 price={product.price}
                 productName={product.name}
                 productDescript={product.description}
-                handle={addToCartHandle()}
+                handle={() => {
+                  addToCartHandle(product);
+                }}
               />
             </div>
           ))}

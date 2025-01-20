@@ -1,7 +1,7 @@
 import { atom, useAtom } from "jotai";
 import Immutable from "seamless-immutable";
 
-const initialCart = [
+const initialCart = Immutable([
   {
     id: 1,
     product_id: 1,
@@ -12,7 +12,7 @@ const initialCart = [
     description:
       "Premium organic green tea leaves, rich in antioxidants and offering a smooth, refreshing taste.",
   },
-];
+]);
 
 export const cartAtom = atom(initialCart);
 
@@ -27,7 +27,7 @@ export const useCart = () => {
 
   const addToCart = (product) => {
     setCart((currentCart) => {
-      const existingItemIndex = findIndex(
+      const existingItemIndex = cart.findIndex(
         (i) => i.product_id === product.product_id
       );
 
@@ -35,7 +35,7 @@ export const useCart = () => {
         let newQuantity = cart[existingItemIndex].quantity + 1;
 
         const modifiedCart = currentCart.setIn(
-          [existingItemIndex, quantity],
+          [existingItemIndex, "quantity"],
           newQuantity
         );
 
