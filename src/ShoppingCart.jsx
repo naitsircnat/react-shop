@@ -2,7 +2,7 @@ import React from "react";
 import { useCart } from "./CartStore";
 
 const ShoppingCart = () => {
-  const { cart, getCartTotal, modifyQty } = useCart();
+  const { cart, getCartTotal, modifyQty, deleteItem } = useCart();
 
   return (
     <div className="container mt-4">
@@ -37,6 +37,14 @@ const ShoppingCart = () => {
                       }}
                     >
                       +
+                    </button>
+                    <button
+                      className="btn btn-danger btn-sm ms-2"
+                      onClick={() => {
+                        deleteItem(item.product_id);
+                      }}
+                    >
+                      Delete
                     </button>
                   </div>
                 </div>

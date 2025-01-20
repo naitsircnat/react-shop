@@ -48,7 +48,7 @@ export const useCart = () => {
 
       if (existingItemIndex !== -1) {
         if (newQuantity <= 0) {
-          return currentCart.filter((i) => i.product_id != productId);
+          return currentCart.filter((i) => i.product_id !== productId);
         } else {
           return currentCart.setIn(
             [existingItemIndex, "quantity"],
@@ -59,15 +59,17 @@ export const useCart = () => {
     });
   };
 
-  /*
-  - Add modifycart function with the custom hook
-  - Add the button and relevant linkage to cart item
-  */
+  const deleteItem = (productId) => {
+    setCart((currentCart) => {
+      return currentCart.filter((item) => item.product_id !== productId);
+    });
+  };
 
   return {
     cart,
     getCartTotal,
     addToCart,
     modifyQty,
+    deleteItem,
   };
 };
