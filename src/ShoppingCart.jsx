@@ -14,7 +14,7 @@ const ShoppingCart = () => {
           <ul className="list-group">
             {cart.map((item) => (
               <li
-                key={item.id}
+                key={item.product_id}
                 className="list-group-item d-flex justify-content-between align-items-center"
               >
                 <div>
