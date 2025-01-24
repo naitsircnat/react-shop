@@ -14,6 +14,11 @@ export default function Login() {
     password: "",
   };
 
+  const validationSchema = Yup.object({
+    email: Yup.string().email("Invalid email").required("Required"),
+    password: Yup.string().required("Required"),
+  });
+
   return (
     <>
       <h2>Login</h2>
