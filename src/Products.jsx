@@ -4,6 +4,7 @@ import axios from "axios";
 import { useFlashMessage } from "./FlashMessageStore.js";
 import { useCart } from "./CartStore.js";
 import { useLocation } from "wouter";
+import { meta } from "@eslint/js";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
@@ -13,7 +14,9 @@ export default function Products() {
 
   useEffect(() => {
     const getProducts = async () => {
-      const response = await axios.get("/featured.json");
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_URL}/api/products`
+      );
       setProducts(response.data);
     };
 
