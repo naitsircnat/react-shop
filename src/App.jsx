@@ -7,6 +7,7 @@ import Register from "./Register.jsx";
 import { Route, Switch } from "wouter";
 import { useFlashMessage } from "./FlashMessageStore";
 import ShoppingCart from "./ShoppingCart.jsx";
+import Login from "./Login.jsx";
 
 export default function App() {
   const { getMessage, clearMessage } = useFlashMessage();
@@ -39,6 +40,7 @@ export default function App() {
         <Route path="/products" component={Products} />
         <Route path="/register" component={Register} />
         <Route path="/cart" component={ShoppingCart} />
+        <Route path="/login" component={Login} />
       </Switch>
       {/* footer */}
       <footer className="bg-dark text-white text-center py-3">
