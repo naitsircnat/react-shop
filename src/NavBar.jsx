@@ -75,6 +75,16 @@ export default function NavBar() {
               </li>
               <li className="nav-item">
                 <Link
+                  href="/profile"
+                  className={`nav-link ${
+                    location === "/profile" ? "active" : ""
+                  }`}
+                >
+                  Profile
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
                   href="/cart"
                   className={`nav-link ${location === "/cart" ? "active" : ""}`}
                 >

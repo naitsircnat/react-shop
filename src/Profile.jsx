@@ -29,7 +29,7 @@ export default function Profile() {
     fetchData();
   }, []);
 
-  const formValidation = Yup.object({
+  const validationSchema = Yup.object({
     name: Yup.string().required("Required"),
     email: Yup.string().email("Invalid email address").required("Required"),
     salutation: Yup.string(),
@@ -75,4 +75,136 @@ export default function Profile() {
     showMessage("Account deleted", "danger");
     setLocation("/");
   };
+
+  return (
+    <div className="container mt-5">
+      <h2>Edit Profile</h2>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={submitHandler}
+        enableReinitialize
+      >
+        {function (formik) {
+          return (
+            <Form>
+              <div className="mb-3">
+                <label htmlFor="name" className="form-label">
+                  Name
+                </label>
+                <Field
+                  type="text"
+                  id="name"
+                  name="name"
+                  className="form-control"
+                ></Field>
+                <ErrorMessage
+                  name="name"
+                  component="div"
+                  className="text-danger"
+                />
+              </div>
+
+              <div className="mb-3">
+                <label htmlFor="name" className="form-label">
+                  Email
+                </label>
+                <Field
+                  type="text"
+                  id="email"
+                  name="email"
+                  className="form-control"
+                ></Field>
+                <ErrorMessage
+                  name="email"
+                  component="div"
+                  className="text-danger"
+                />
+              </div>
+
+              <div className="mb-3">
+                <label htmlFor="salutation" className="form-label">
+                  Salutation
+                </label>
+                <Field
+                  as="select"
+                  id="salutation"
+                  name="salutation"
+                  className="form-control"
+                >
+                  <option value="">Select</option>
+                  <option value="Mr">Mr.</option>
+                  <option value="Ms">Ms.</option>
+                  <option value="Mrs">Mrs.</option>
+                </Field>
+                <ErrorMessage
+                  name="salutation"
+                  component="div"
+                  className="text-danger"
+                />
+              </div>
+
+              <div className="mb-3">
+                <label htmlFor="marketingPreferences" className="form-label">
+                  Marketing Preferences
+                </label>
+                <Field
+                  as="select"
+                  id="marketingPreferences"
+                  name="marketingPreferences"
+                  multiple
+                  className="form-control"
+                >
+                  <option value="email">Email</option>
+                  <option value="sms">SMS</option>
+                </Field>
+                <ErrorMessage
+                  name="marketingPreferences"
+                  component="div"
+                  className="text-danger"
+                />
+              </div>
+
+              <div className="mb-3">
+                <label htmlFor="country" className="form-label">
+                  Marketing Country
+                </label>
+                <Field
+                  as="select"
+                  id="country"
+                  name="country"
+                  className="form-control"
+                >
+                  <option value="">Select Country</option>
+                  <option value="sg">Singapore</option>
+                  <option value="my">Malaysia</option>
+                  <option value="in">Indonesia</option>
+                  <option value="th">Thailand</option>
+                </Field>
+                <ErrorMessage
+                  name="country"
+                  component="div"
+                  className="text-danger"
+                />
+              </div>
+              {formik.errors.submit && (
+                <div className="alert alert-danger">{formik.errors.submit}</div>
+              )}
+
+              <button
+                type="submit"
+                className="btn btn-primary me-3"
+                disabled={formik.isSubmitting}
+              >
+                {formik.isSubmitting ? "Updating..." : "Update Profile"}
+              </button>
+              <button className="btn btn-danger" onClick={deleteHandler}>
+                Delete Account
+              </button>
+            </Form>
+          );
+        }}
+      </Formik>
+    </div>
+  );
 }
