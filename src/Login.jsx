@@ -6,8 +6,8 @@ import axios from "axios";
 import { useFlashMessage } from "./FlashMessageStore";
 
 export default function Login() {
-  const { showMessage } = useFlashMessage;
-  const [, setLocation] = useLocation;
+  const { showMessage } = useFlashMessage();
+  const [, setLocation] = useLocation();
 
   const initialValues = {
     email: "",
@@ -38,7 +38,7 @@ export default function Login() {
 
   return (
     <>
-      <div className="container mt-5">
+      <div className="container my-5">
         <p>Login form</p>
         <Formik
           initialValues={initialValues}

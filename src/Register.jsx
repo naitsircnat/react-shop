@@ -58,7 +58,7 @@ function Register() {
   };
 
   return (
-    <div className="container mt-5">
+    <div className="container my-5">
       <h1>Register</h1>
       <Formik
         initialValues={initialValues}
@@ -175,7 +175,7 @@ function Register() {
               <div className="form-check">
                 <Field
                   className="form-check-input"
-                  value="marketing"
+                  value="email"
                   type="checkbox"
                   id="emailMarketing"
                   name="marketingPreferences"
