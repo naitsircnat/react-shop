@@ -1,79 +1,76 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useFlashMessage } from "./FlashMessageStore";
 import { useJwt } from "./UserStore";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import { useFlashMessage } from "./FlashMessageStore";
 import * as Yup from "yup";
-import { Formik, ErrorMessage, Form, Field } from "formik";
 import { useLocation } from "wouter";
 
 export default function Profile() {
-  const { showMessage } = useFlashMessage();
   const { getJwt } = useJwt();
   const [initialValues, setInitialValues] = useState({});
+  const { showMessage } = useFlashMessage();
   const [, setLocation] = useLocation();
 
   useEffect(() => {
-    const fetchData = async () => {
+    async function fetchData() {
       const token = getJwt();
       const response = await axios.get(
         import.meta.env.VITE_API_URL + "/api/users/me",
         {
           headers: {
-            Authorization: `Bearer: ${token}`,
+            Authorization: `Bearer ${token}`,
           },
         }
       );
       setInitialValues(response.data.user);
-    };
-
+    }
     fetchData();
   }, []);
+
+  const handleDeleteAccount = async () => {
+    const token = getJwt();
+    await axios.delete(import.meta.env.VITE_API_URL + "/api/users/me", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    showMessage("Account has been deleted", "danger");
+    setLocation("/");
+  };
 
   const validationSchema = Yup.object({
     name: Yup.string().required("Required"),
     email: Yup.string().email("Invalid email address").required("Required"),
     salutation: Yup.string(),
-    country: Yup.string(),
     marketingPreferences: Yup.array().of(Yup.string()),
+    country: Yup.string(),
   });
 
-  const submitHandler = async (actions, values) => {
+  const handleSubmit = async (values, actions) => {
     try {
       const token = getJwt();
-
       if (!token) {
-        showMessage("You must be logged in", "danger");
+        showMessage("You must be logged in to update your profile.", "error");
         actions.setSubmitting(false);
         return;
       }
 
       await axios.put(import.meta.env.VITE_API_URL + "/api/users/me", values, {
         headers: {
-          Authorization: `Bearer: ${token}`,
+          Authorization: `Bearer ${token}`,
         },
       });
 
-      showMessage("Details updated successfully", "success");
+      showMessage("Profile updated successfully!", "success");
       actions.setSubmitting(false);
     } catch (error) {
-      console.error("Error updating details: ", error);
+      console.error("Error updating profile:", error);
       actions.setErrors({
-        submit: error.response?.data?.message || "An error ocurred",
+        submit: error.response?.data?.message || "An error occurred",
       });
       actions.setSubmitting(false);
     }
-  };
-
-  const deleteHandler = async () => {
-    const token = getJwt();
-
-    await axios.delete(import.meta.env.VITE_API_URL + "/api/users/me", {
-      headers: {
-        Authorization: `Bearer: ${token}`,
-      },
-    });
-    showMessage("Account deleted", "danger");
-    setLocation("/");
   };
 
   return (
@@ -82,8 +79,8 @@ export default function Profile() {
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
-        onSubmit={submitHandler}
-        enableReinitialize
+        onSubmit={handleSubmit}
+        enableReinitialize // Allows form to reinitialize with fetched profile data
       >
         {function (formik) {
           return (
@@ -97,7 +94,7 @@ export default function Profile() {
                   id="name"
                   name="name"
                   className="form-control"
-                ></Field>
+                />
                 <ErrorMessage
                   name="name"
                   component="div"
@@ -106,15 +103,15 @@ export default function Profile() {
               </div>
 
               <div className="mb-3">
-                <label htmlFor="name" className="form-label">
+                <label htmlFor="email" className="form-label">
                   Email
                 </label>
                 <Field
-                  type="text"
+                  type="email"
                   id="email"
                   name="email"
                   className="form-control"
-                ></Field>
+                />
                 <ErrorMessage
                   name="email"
                   component="div"
@@ -136,6 +133,7 @@ export default function Profile() {
                   <option value="Mr">Mr.</option>
                   <option value="Ms">Ms.</option>
                   <option value="Mrs">Mrs.</option>
+                  <option value="Dr">Dr.</option>
                 </Field>
                 <ErrorMessage
                   name="salutation"
@@ -167,13 +165,13 @@ export default function Profile() {
 
               <div className="mb-3">
                 <label htmlFor="country" className="form-label">
-                  Marketing Country
+                  Country
                 </label>
                 <Field
                   as="select"
+                  className="form-select"
                   id="country"
                   name="country"
-                  className="form-control"
                 >
                   <option value="">Select Country</option>
                   <option value="sg">Singapore</option>
@@ -187,24 +185,26 @@ export default function Profile() {
                   className="text-danger"
                 />
               </div>
+
               {formik.errors.submit && (
                 <div className="alert alert-danger">{formik.errors.submit}</div>
               )}
 
               <button
                 type="submit"
-                className="btn btn-primary me-3"
+                className="btn btn-primary"
                 disabled={formik.isSubmitting}
               >
                 {formik.isSubmitting ? "Updating..." : "Update Profile"}
-              </button>
-              <button className="btn btn-danger" onClick={deleteHandler}>
-                Delete Account
               </button>
             </Form>
           );
         }}
       </Formik>
+      <h1>Delete Account</h1>
+      <button class="btn btn-danger" onClick={handleDeleteAccount}>
+        Delete Account
+      </button>
     </div>
   );
 }
