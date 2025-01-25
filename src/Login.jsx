@@ -4,10 +4,12 @@ import * as Yup from "yup";
 import { useLocation } from "wouter";
 import axios from "axios";
 import { useFlashMessage } from "./FlashMessageStore";
+import { useJwt } from "./UserStore";
 
 export default function Login() {
   const { showMessage } = useFlashMessage();
   const [, setLocation] = useLocation();
+  const { setJwt } = useJwt();
 
   const initialValues = {
     email: "",
@@ -26,6 +28,9 @@ export default function Login() {
         values
       );
       console.log("Login successful", response.data);
+
+      setJwt(response.data.token);
+
       actions.setSubmitting(false);
       showMessage("Login successful", "success");
       setLocation("/");
