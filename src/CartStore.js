@@ -5,21 +5,52 @@ import axios from "axios";
 import { useEffect, useRef } from "react";
 
 const initialCart = Immutable([
-  {
-    product_id: 5,
-    quantity: 10,
-    productName: "Organic Green Tea",
-    price: 12.99,
-    imageUrl: "https://picsum.photos/id/225/300/200",
-    description:
-      "Premium organic green tea leaves, rich in antioxidants and offering a smooth, refreshing taste.",
-  },
+  // {
+  //   product_id: 5,
+  //   quantity: 10,
+  //   productName: "Organic Green Tea",
+  //   price: 12.99,
+  //   imageUrl: "https://picsum.photos/id/225/300/200",
+  //   description:
+  //     "Premium organic green tea leaves, rich in antioxidants and offering a smooth, refreshing taste.",
+  // },
 ]);
 
 export const cartAtom = atom(initialCart);
 
+export const cartLoadAtom = atom(false);
+
 export const useCart = () => {
   const [cart, setCart] = useAtom(cartAtom);
+  const [isLoading, setIsLoading] = useAtom(cartLoadAtom);
+  const { getJwt } = useJwt();
+
+  useEffect(() => {
+    fetchCart();
+  }, []);
+
+  const fetchCart = async () => {
+    setIsLoading(true);
+
+    const token = getJwt();
+
+    try {
+      const response = await axios.get(
+        import.meta.env.VITE_API_URL + "api/cart/",
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      );
+
+      setCart(Immutable(response.data));
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const getCartTotal = () => {
     return cart
