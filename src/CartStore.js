@@ -47,14 +47,14 @@ export const useCart = () => {
     const token = getJwt();
 
     try {
-      const updatedCartItems = cart.map((item) => ({
+      const updatedCartItems = updatedCart.map((item) => ({
         product_id: item.product_id,
         quantity: item.quantity,
       }));
 
       await axios.put(
         import.meta.env.VITE_API_URL + "/api/cart",
-        updatedCartItems,
+        { cartItems: updatedCartItems },
         {
           headers: {
             Authorization: "Bearer " + token,
