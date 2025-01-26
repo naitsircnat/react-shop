@@ -20,9 +20,8 @@ export const useCart = () => {
   }, []);
 
   const fetchCart = async () => {
-    setIsLoading(true);
-
     const token = getJwt();
+    setIsLoading(true);
 
     try {
       const response = await axios.get(
@@ -43,8 +42,8 @@ export const useCart = () => {
   };
 
   const updateCart = async (updatedCart) => {
-    setIsLoading(true);
     const token = getJwt();
+    setIsLoading(true);
 
     try {
       const updatedCartItems = updatedCart.map((item) => ({

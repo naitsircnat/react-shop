@@ -202,7 +202,7 @@ export default function Profile() {
         }}
       </Formik>
       <h1>Delete Account</h1>
-      <button class="btn btn-danger" onClick={handleDeleteAccount}>
+      <button className="btn btn-danger" onClick={handleDeleteAccount}>
         Delete Account
       </button>
     </div>
