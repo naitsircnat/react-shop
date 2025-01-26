@@ -1,30 +1,26 @@
 [
   {
     "id": 1,
-    "name": "Ethiopian Sunrise",
-    "price": 15.99,
-    "image": "https://picsum.photos/id/20/300/200",
-    "description": "A bright and fruity coffee with floral notes."
+    "name": "Sleek Smartwatch",
+    "price": 199.99,
+    "image": "https://picsum.photos/id/20/300/200"
   },
   {
     "id": 2,
-    "name": "Colombian Gold",
-    "price": 12.99,
-    "image": "https://picsum.photos/id/20/300/200",
-    "description": "Smooth and balanced with a caramel finish."
+    "name": "Wireless Earbuds",
+    "price": 79.99,
+    "image": "https://picsum.photos/id/1/300/200"
   },
   {
     "id": 3,
-    "name": "Sumatran Velvet",
-    "price": 17.99,
-    "image": "https://picsum.photos/id/20/300/200",
-    "description": "Bold and earthy with hints of dark chocolate."
+    "name": "Portable Power Bank",
+    "price": 49.99,
+    "image": "https://picsum.photos/id/26/300/200"
   },
   {
     "id": 4,
-    "name": "Brazilian Bliss",
-    "price": 14.99,
-    "image": "https://picsum.photos/id/20/300/200",
-    "description": "Rich and nutty with a creamy body."
+    "name": "HD Action Camera",
+    "price": 129.99,
+    "image": "https://picsum.photos/id/96/300/200"
   }
 ]
