@@ -25,13 +25,15 @@ export const useCart = () => {
 
     try {
       const response = await axios.get(
-        import.meta.env.VITE_API_URL + "api/cart/",
+        import.meta.env.VITE_API_URL + "/api/cart",
         {
           headers: {
             Authorization: "Bearer " + token,
           },
         }
       );
+
+      console.log("API response: ", response.data);
 
       setCart(Immutable(response.data));
     } catch (error) {
