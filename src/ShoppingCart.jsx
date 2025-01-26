@@ -2,7 +2,7 @@ import React from "react";
 import { useCart } from "./CartStore";
 
 const ShoppingCart = () => {
-  const { cart, getCartTotal, modifyQty, deleteItem } = useCart();
+  const { cart, getCartTotal, modifyQuantity, removeFromCart } = useCart();
 
   return (
     <div className="container mt-4">
@@ -17,13 +17,14 @@ const ShoppingCart = () => {
                 key={item.product_id}
                 className="list-group-item d-flex justify-content-between align-items-center"
               >
+                <img src={item.imageUrl} />
                 <div>
                   <h5>{item.productName}</h5>
                   <div className="d-flex align-items-center">
                     <button
                       className="btn btn-sm btn-secondary me-2"
                       onClick={() => {
-                        modifyQty(item.product_id, item.quantity - 1);
+                        modifyQuantity(item.product_id, item.quantity - 1);
                       }}
                     >
                       -
@@ -33,7 +34,7 @@ const ShoppingCart = () => {
                     <button
                       className="btn btn-sm btn-secondary ms-2"
                       onClick={() => {
-                        modifyQty(item.product_id, item.quantity + 1);
+                        modifyQuantity(item.product_id, item.quantity + 1);
                       }}
                     >
                       +
@@ -41,7 +42,7 @@ const ShoppingCart = () => {
                     <button
                       className="btn btn-danger btn-sm ms-2"
                       onClick={() => {
-                        deleteItem(item.product_id);
+                        removeFromCart(item.product_id);
                       }}
                     >
                       Delete
