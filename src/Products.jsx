@@ -12,12 +12,13 @@ export default function Products() {
   const { showMessage } = useFlashMessage();
 
   useEffect(() => {
-    const getProducts = async () => {
-      const response = await axios.get("/featured.json");
+    const fetchData = async () => {
+      const response = await axios.get(
+        import.meta.env.VITE_API_URL + "/api/products"
+      );
       setProducts(response.data);
     };
-
-    getProducts();
+    fetchData();
   }, []);
 
   const addToCartHandle = (product) => {
@@ -26,7 +27,6 @@ export default function Products() {
       productName: product.name,
       price: product.price,
       imageUrl: product.image,
-      description: product.description,
     });
     showMessage("Item added to cart!", "success");
     setLocation("/cart");
@@ -44,7 +44,6 @@ export default function Products() {
                 imageUrl={product.image}
                 price={product.price}
                 productName={product.name}
-                productDescript={product.description}
                 handle={() => {
                   addToCartHandle(product);
                 }}
