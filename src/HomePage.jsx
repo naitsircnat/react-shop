@@ -40,10 +40,12 @@ export default function HomePage() {
   return (
     <>
       {/* hero */}
-      <header class="bg-primary text-white text-center py-5">
-        <div class="container">
-          <h1 class="display-4">Welcome to E-Shop</h1>
-          <p class="lead">Discover amazing products at unbeatable prices!</p>
+      <header className="bg-primary text-white text-center py-5">
+        <div className="container">
+          <h1 className="display-4">Welcome to E-Shop</h1>
+          <p className="lead">
+            Discover amazing products at unbeatable prices!
+          </p>
         </div>
       </header>
       {/* featured */}

@@ -1,5 +1,29 @@
 import React from "react";
 import { useCart } from "./CartStore";
+import axios from "axios";
+import { useJwt } from "./UserStore";
+
+const checkoutHandle = async () => {
+  const jwt = getJwt();
+
+  try {
+    const response = await axios.post(
+      `${import.meta.env.VITE_API_URL}/api/checkout`,
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${jwt}`,
+        },
+      }
+    );
+
+    window.location.href = response.data.url;
+  } catch (error) {
+    console.error("Error in checking out", error);
+    alert("Checkout failed. Please try again");
+  } finally {
+  }
+};
 
 const ShoppingCart = () => {
   const { cart, getCartTotal, modifyQuantity, removeFromCart } = useCart();
@@ -55,6 +79,9 @@ const ShoppingCart = () => {
           </ul>
           <div className="mt-3 text-end">
             <h4>Total: ${getCartTotal()}</h4>
+            <button className="btn btn-primary-mt2">
+              {isLoading ? "Processing" : "Proceed to Checkout"}
+            </button>
           </div>
         </>
       )}

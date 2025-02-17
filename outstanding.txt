@@ -1,0 +1,4 @@
+- Check whether/how to use isLoading in checkout button correctly
+- Change products in site
+- Add new sections to relevant pages
+- Update nav bar when logged in/out
