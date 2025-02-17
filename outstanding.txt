@@ -2,3 +2,8 @@
 - Change products in site
 - Add new sections to relevant pages
 - Update nav bar when logged in/out
+- Add responsiveness
+- Fix floating footer issue
+- create actual cart icon and adjust position
+- adjust login and register position
+
