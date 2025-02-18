@@ -1,9 +1,15 @@
-- Check whether/how to use isLoading in checkout button correctly
-- Change products in site
-- Add new sections to relevant pages
+Top 3
+- Change products and respective content in site
+- Add more sections in homepage
+- Adjust login, register and cart position
+
 - Update nav bar when logged in/out
+- Add more sections in product pages
 - Add responsiveness
 - Fix floating footer issue
-- create actual cart icon and adjust position
-- adjust login and register position
+- Use actual cart icon 
+- Add About Us page
+- Show ordered items in Profile page
+- Find new logo for shop
+- Add more info to footer
 
