@@ -40,24 +40,19 @@ export default function HomePage() {
   return (
     <>
       {/* hero */}
-      <header className="bg-primary text-white text-center py-5">
-        <div className="container">
-          <h1 className="display-4">Welcome to E-Shop</h1>
-          <p className="lead">
-            Discover amazing products at unbeatable prices!
-          </p>
-        </div>
-      </header>
+      <section className="container-fluid" id="hero">
+        <p className="display-3">The Artisan Cup</p>
+      </section>
       {/* featured */}
       <section className="container my-5 px-lg-1">
-        <h2>Featured Products</h2>
+        <h2>Our Coffees</h2>
 
         <div className="row gy-3">{genProductCards()}</div>
       </section>
 
       {/* products */}
       <section className="container my-5 px-lg-1">
-        <h2>Our Products</h2>
+        <h2>Our Teas</h2>
 
         <div className="row gy-3">
           {featuredProducts.map((product) => (

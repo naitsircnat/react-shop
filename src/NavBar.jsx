@@ -15,7 +15,7 @@ export default function NavBar() {
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
           <Link className="navbar-brand" href="/">
-            E-Shop
+            The Artisan Cup
           </Link>
           <button
             className="navbar-toggler"

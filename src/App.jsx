@@ -47,13 +47,9 @@ export default function App() {
       {/* footer */}
       <footer className="bg-dark text-white text-center py-3">
         <div className="container">
-          <p>&copy; 2025 E-Shop. All rights reserved.</p>
+          <p>&copy; 2025 The Artisan Cup. All rights reserved.</p>
         </div>
       </footer>
     </>
   );
 }
-
-/** 
-TO DO
-*/
