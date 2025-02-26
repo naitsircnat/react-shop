@@ -17,6 +17,7 @@ export default function Products() {
         import.meta.env.VITE_API_URL + "/api/products"
       );
       setProducts(response.data);
+      console.log(response.data);
     };
     fetchData();
   }, []);
@@ -36,7 +37,6 @@ export default function Products() {
     <>
       <div className="container mt-3">
         <h1>Products</h1>
-        <p>Product listing</p>
         <div className="row">
           {products.map((product) => (
             <div key={product.id} className="col-12 col-md-6 col-lg-3">
@@ -44,6 +44,7 @@ export default function Products() {
                 imageUrl={product.image}
                 price={product.price}
                 productName={product.name}
+                productDescript={product.description}
                 handle={() => {
                   addToCartHandle(product);
                 }}
