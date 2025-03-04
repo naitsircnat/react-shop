@@ -11,10 +11,12 @@ export default function Profile() {
   const [initialValues, setInitialValues] = useState({});
   const { showMessage } = useFlashMessage();
   const [, setLocation] = useLocation();
+  const [orders, setOrders] = useState([]);
+
+  const token = getJwt();
 
   useEffect(() => {
     async function fetchData() {
-      const token = getJwt();
       const response = await axios.get(
         import.meta.env.VITE_API_URL + "/api/users/me",
         {
@@ -24,8 +26,25 @@ export default function Profile() {
         }
       );
       setInitialValues(response.data.user);
+      console.log(response.data.user);
     }
     fetchData();
+  }, []);
+
+  useEffect(() => {
+    async function fetchOrders() {
+      const response = await axios.get(
+        import.meta.env.VITE_API_URL + "/api/users/orders",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setOrders(response.data);
+      console.log(response.data);
+    }
+    fetchOrders();
   }, []);
 
   const handleDeleteAccount = async () => {
@@ -75,6 +94,14 @@ export default function Profile() {
 
   return (
     <div className="container mt-5">
+      <h2>My Orders</h2>
+      {orders.map((order) => (
+        <div>
+          <p>{order.id}</p>
+          <p>{order.status}</p>
+          <p>{order.total}</p>
+        </div>
+      ))}
       <h2>Edit Profile</h2>
       <Formik
         initialValues={initialValues}
@@ -201,10 +228,16 @@ export default function Profile() {
           );
         }}
       </Formik>
-      <h1>Delete Account</h1>
+      <h2>Delete Account</h2>
       <button className="btn btn-danger" onClick={handleDeleteAccount}>
         Delete Account
       </button>
     </div>
   );
 }
+
+/*
+How to show orders made
+For each order, to display
+- order id, order date/time, status, total
+*/
