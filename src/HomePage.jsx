@@ -3,22 +3,23 @@ import ProductCard from "./ProductCard.jsx";
 import axios from "axios";
 
 export default function HomePage() {
-  // const [featuredProducts, setFeaturedProducts] = useState([]);
-
   const [teas, setTeas] = useState([]);
+  const [coffees, setCoffees] = useState([]);
 
-  // useEffect(() => {
-  //   const fetchFeaturedProducts = async () => {
-  //     try {
-  //       const response = await axios.get("featured.json");
-  //       setFeaturedProducts(response.data);
-  //     } catch (error) {
-  //       console.error("Error fetching products:", error);
-  //     }
-  //   };
+  useEffect(() => {
+    const fetchCoffees = async () => {
+      try {
+        const response = await axios.get(
+          import.meta.env.VITE_API_URL + "/api/products/coffee"
+        );
+        setCoffees(response.data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
 
-  //   fetchFeaturedProducts();
-  // }, []);
+    fetchCoffees();
+  }, []);
 
   useEffect(() => {
     const fetchTeas = async () => {
@@ -27,7 +28,6 @@ export default function HomePage() {
           import.meta.env.VITE_API_URL + "/api/products/tea"
         );
         setTeas(response.data);
-        console.log(response.data);
       } catch (error) {
         console.error("Error fetching products:", error);
       }
@@ -35,25 +35,6 @@ export default function HomePage() {
 
     fetchTeas();
   }, []);
-
-  // const genProductCards = () => {
-  //   const productCards = [];
-
-  //   for (let product of featuredProducts) {
-  //     productCards.push(
-  //       <div key={product.id} className="col-12 col-md-6 col-lg-3">
-  //         <ProductCard
-  //           imageUrl={product.image}
-  //           price={product.price}
-  //           productName={product.name}
-  //           productDescript={product.description}
-  //         />
-  //       </div>
-  //     );
-  //   }
-
-  //   return productCards;
-  // };
 
   return (
     <>
@@ -65,7 +46,18 @@ export default function HomePage() {
       <section className="container my-5 px-lg-1">
         <h2>Our Coffees</h2>
 
-        {/* <div className="row gy-3">{genProductCards()}</div> */}
+        <div className="row gy-3">
+          {coffees.map((product) => (
+            <div key={product.id} className="col-12 col-md-6 col-lg-3">
+              <ProductCard
+                imageUrl={product.image}
+                price={product.price}
+                productName={product.name}
+                productDescript={product.description}
+              />
+            </div>
+          ))}
+        </div>
       </section>
 
       {/* Teas */}
@@ -73,7 +65,6 @@ export default function HomePage() {
         <h2>Our Teas</h2>
 
         <div className="row gy-3">
-          {/* {console.log(teas)}; */}
           {teas.map((product) => (
             <div key={product.id} className="col-12 col-md-6 col-lg-3">
               <ProductCard

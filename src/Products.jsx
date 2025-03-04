@@ -37,7 +37,7 @@ export default function Products() {
     <>
       <div className="container mt-3">
         <h1>Products</h1>
-        <div className="row">
+        <div className="row gy-3">
           {products.map((product) => (
             <div key={product.id} className="col-12 col-md-6 col-lg-3">
               <ProductCard
