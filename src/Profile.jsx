@@ -5,6 +5,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useFlashMessage } from "./FlashMessageStore";
 import * as Yup from "yup";
 import { useLocation } from "wouter";
+import OrderCard from "./OrderCard";
 
 export default function Profile() {
   const { getJwt } = useJwt();
@@ -95,6 +96,7 @@ export default function Profile() {
   return (
     <div className="container mt-5">
       <h2>My Orders</h2>
+
       {orders.map((order) => (
         <div>
           <p>{order.id}</p>
