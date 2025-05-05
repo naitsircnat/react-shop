@@ -70,7 +70,17 @@ export default function NavBar() {
                   }`}
                   href="/login"
                 >
-                  Login
+                  Log In
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  className={`nav-link ${
+                    location === "/login" ? "active" : ""
+                  }`}
+                  href="/login"
+                >
+                  Log Out
                 </Link>
               </li>
               <li className="nav-item">

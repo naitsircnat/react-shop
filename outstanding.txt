@@ -1,7 +1,9 @@
 Top 3
-- Update nav bar when logged in/out
+- Incorporate log out button
+- Update nav bar when logged in/out (and other relevant sections)
 - Show ordered items in Profile page
 - Create proper success page after successful order
+- Update page title and icon
 - Add responsiveness
 
 - Adjust login, register and cart position
@@ -11,3 +13,18 @@ Top 3
 - Find new logo for shop
 - Add more info to footer
 
+------
+
+Navbar updates when logged in/out
+
+control based on presence of jwt token
+
+LOGGED OUT
+Navbar: 
+- profile
+
+LOGGED IN
+Navbar: 
++ log out
+- log in
+- register
