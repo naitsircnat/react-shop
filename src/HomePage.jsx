@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ProductCard from "./ProductCard.jsx";
 import axios from "axios";
+import { Link, useLocation } from "wouter";
 
 export default function HomePage() {
   const [teas, setTeas] = useState([]);
@@ -41,7 +42,7 @@ export default function HomePage() {
       {/* hero */}
       <section className="container-fluid p-4" id="hero">
         <p className="display-1">The Artisan Cup</p>
-        <p className="banner-lead lead">Brew Better Moments.</p>
+        <p className="banner-lead lead">Brew Better Moments</p>
       </section>
       {/* Coffees */}
       <section className="container my-5 px-lg-1">
@@ -135,12 +136,15 @@ export default function HomePage() {
           Whether you're craving bold coffee or soothing tea, explore our
           curated collection and discover your new daily ritual.
         </p>
-        <a href="order-now.html">
+        {/* <Link className="navbar-brand" href="/">
+                    The Artisan Cup
+                  </Link> */}
+        <Link href="products">
           <button type="button" className="btn btn-success">
             {" "}
             Shop All Drinks
           </button>
-        </a>
+        </Link>
       </section>
     </>
   );
