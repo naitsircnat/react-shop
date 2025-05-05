@@ -1,5 +1,4 @@
 Top 3
-- Change products and respective content in site
 - Add more sections in homepage
 - Adjust login, register and cart position
 
