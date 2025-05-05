@@ -4,16 +4,16 @@ import axios from "axios";
 import { Link, useLocation } from "wouter";
 
 export default function HomePage() {
-  const [teas, setTeas] = useState([]);
-  const [coffees, setCoffees] = useState([]);
+  const [featuredTeas, setFeaturedTeas] = useState([]);
+  const [featuredCoffees, setFeaturedCoffees] = useState([]);
 
   useEffect(() => {
     const fetchCoffees = async () => {
       try {
         const response = await axios.get(
-          import.meta.env.VITE_API_URL + "/api/products/coffee"
+          import.meta.env.VITE_API_URL + "/api/products/featured-coffee"
         );
-        setCoffees(response.data);
+        setFeaturedCoffees(response.data);
       } catch (error) {
         console.error("Error fetching products:", error);
       }
@@ -26,9 +26,9 @@ export default function HomePage() {
     const fetchTeas = async () => {
       try {
         const response = await axios.get(
-          import.meta.env.VITE_API_URL + "/api/products/tea"
+          import.meta.env.VITE_API_URL + "/api/products/featured-tea"
         );
-        setTeas(response.data);
+        setFeaturedTeas(response.data);
       } catch (error) {
         console.error("Error fetching products:", error);
       }
@@ -49,7 +49,7 @@ export default function HomePage() {
         <h2>Featured Coffees</h2>
 
         <div className="row gy-3">
-          {coffees.map((product) => (
+          {featuredCoffees.map((product) => (
             <div key={product.id} className="col-12 col-md-6 col-lg-3">
               <ProductCard
                 imageUrl={product.image}
@@ -67,7 +67,7 @@ export default function HomePage() {
         <h2>Featured Teas</h2>
 
         <div className="row gy-3">
-          {teas.map((product) => (
+          {featuredTeas.map((product) => (
             <div key={product.id} className="col-12 col-md-6 col-lg-3">
               <ProductCard
                 imageUrl={product.image}
