@@ -1,9 +1,17 @@
 #hero {
-  display: flex;
-  background-image: url("assets/hero.jpg");
+  /* display: flex; */
+  /* background-image: url("assets/hero.jpg"); */
+  background-image: url("home/cta1.jpg");
   background-size: cover;
   background-position: center;
   height: 65vh;
-  align-items: center;
+  /* align-items: center; */
+  color: white;
+}
+#cta {
+  background-image: url("home/cta2.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 55vh;
   color: white;
 }

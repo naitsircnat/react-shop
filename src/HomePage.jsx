@@ -39,8 +39,9 @@ export default function HomePage() {
   return (
     <>
       {/* hero */}
-      <section className="container-fluid" id="hero">
+      <section className="container-fluid p-4" id="hero">
         <p className="display-3">The Artisan Cup</p>
+        <p className="banner-lead lead">Brew Better Moments.</p>
       </section>
       {/* Coffees */}
       <section className="container my-5 px-lg-1">
@@ -125,6 +126,21 @@ export default function HomePage() {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* CTA */}
+      <section id="cta" class="container-fluid mt-5 p-4">
+        <h2 className="display-5">Find Your Perfect Brew</h2>
+        <p className="lead">
+          Whether you're craving bold coffee or soothing tea, explore our
+          curated collection and discover your new daily ritual.
+        </p>
+        <a href="order-now.html">
+          <button type="button" className="btn btn-success">
+            {" "}
+            Shop All Drinks
+          </button>
+        </a>
       </section>
     </>
   );
