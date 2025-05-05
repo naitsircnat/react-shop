@@ -1,14 +1,13 @@
 Top 3
-- Add more sections in homepage
-- Adjust login, register and cart position
-
 - Update nav bar when logged in/out
-- Add more sections in product pages
+- Show ordered items in Profile page
+- Create proper success page after successful order
 - Add responsiveness
+
+- Adjust login, register and cart position
+- Add more sections in product pages
 - Fix floating footer issue
 - Use actual cart icon 
-- Add About Us page
-- Show ordered items in Profile page
 - Find new logo for shop
 - Add more info to footer
 
