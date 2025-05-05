@@ -40,7 +40,7 @@ export default function HomePage() {
     <>
       {/* hero */}
       <section className="container-fluid p-4" id="hero">
-        <p className="display-3">The Artisan Cup</p>
+        <p className="display-1">The Artisan Cup</p>
         <p className="banner-lead lead">Brew Better Moments.</p>
       </section>
       {/* Coffees */}

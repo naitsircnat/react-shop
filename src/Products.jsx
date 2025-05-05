@@ -35,6 +35,11 @@ export default function Products() {
 
   return (
     <>
+      {/* hero */}
+      <section className="container-fluid p-4" id="products-hero">
+        <p className="display-2">Our Full Range</p>
+      </section>
+
       <div className="container mt-3">
         <h1>Products</h1>
         <div className="row gy-3">
