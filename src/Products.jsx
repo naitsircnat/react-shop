@@ -6,9 +6,12 @@ import { useCart } from "./CartStore.js";
 import { useLocation } from "wouter";
 
 export default function Products() {
-  const [products, setProducts] = useState([]);
+  // const [products, setProducts] = useState([]);
+  const [teas, setTeas] = useState([]);
+  const [coffees, setCoffees] = useState([]);
+
   const { addToCart } = useCart();
-  const [, setLocation] = useLocation();
+  const [setLocation] = useLocation();
   const { showMessage } = useFlashMessage();
 
   useEffect(() => {
@@ -17,6 +20,28 @@ export default function Products() {
         import.meta.env.VITE_API_URL + "/api/products"
       );
       setProducts(response.data);
+      console.log(response.data);
+    };
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get(
+        import.meta.env.VITE_API_URL + "/api/products/coffee"
+      );
+      setCoffees(response.data);
+      console.log(response.data);
+    };
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get(
+        import.meta.env.VITE_API_URL + "/api/products/tea"
+      );
+      setTeas(response.data);
       console.log(response.data);
     };
     fetchData();
@@ -40,24 +65,47 @@ export default function Products() {
         <p className="display-2">Our Full Range</p>
       </section>
 
-      <div className="container mt-3">
-        <h1>Products</h1>
-        <div className="row gy-3">
-          {products.map((product) => (
-            <div key={product.id} className="col-12 col-md-6 col-lg-3">
-              <ProductCard
-                imageUrl={product.image}
-                price={product.price}
-                productName={product.name}
-                productDescript={product.description}
-                handle={() => {
-                  addToCartHandle(product);
-                }}
-              />
-            </div>
-          ))}
+      <section>
+        <div className="container mt-3">
+          <h1>Coffees</h1>
+          <div className="row gy-3">
+            {coffees.map((product) => (
+              <div key={product.id} className="col-12 col-md-6 col-lg-3">
+                <ProductCard
+                  imageUrl={product.image}
+                  price={product.price}
+                  productName={product.name}
+                  productDescript={product.description}
+                  handle={() => {
+                    addToCartHandle(product);
+                  }}
+                />
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
+
+      <section>
+        <div className="container mt-3">
+          <h1>Teas</h1>
+          <div className="row gy-3">
+            {teas.map((product) => (
+              <div key={product.id} className="col-12 col-md-6 col-lg-3">
+                <ProductCard
+                  imageUrl={product.image}
+                  price={product.price}
+                  productName={product.name}
+                  productDescript={product.description}
+                  handle={() => {
+                    addToCartHandle(product);
+                  }}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </>
   );
 }
