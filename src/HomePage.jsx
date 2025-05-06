@@ -2,10 +2,15 @@ import React, { useState, useEffect } from "react";
 import ProductCard from "./ProductCard.jsx";
 import axios from "axios";
 import { Link } from "wouter";
+import { useFlashMessage } from "./FlashMessageStore.js";
+import { useCart } from "./CartStore.js";
 
 export default function HomePage() {
   const [featuredTeas, setFeaturedTeas] = useState([]);
   const [featuredCoffees, setFeaturedCoffees] = useState([]);
+
+  const { addToCart } = useCart();
+  const { showMessage } = useFlashMessage();
 
   useEffect(() => {
     const fetchCoffees = async () => {
@@ -87,6 +92,9 @@ export default function HomePage() {
                 price={product.price}
                 productName={product.name}
                 productDescript={product.description}
+                handle={() => {
+                  addToCartHandle(product);
+                }}
               />
             </div>
           ))}

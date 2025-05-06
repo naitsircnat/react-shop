@@ -3,7 +3,6 @@ import ProductCard from "./ProductCard.jsx";
 import axios from "axios";
 import { useFlashMessage } from "./FlashMessageStore.js";
 import { useCart } from "./CartStore.js";
-import { useLocation } from "wouter";
 
 export default function Products() {
   const [teas, setTeas] = useState([]);
