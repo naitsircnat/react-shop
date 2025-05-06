@@ -141,8 +141,8 @@ export default function HomePage() {
                 <h5 className="card-title">Fresh to Your Doorstep</h5>
                 <p className="card-text">
                   From roast to delivery, our blends reach you at peak
-                  freshness. Expect fast, reliable shipping and packaging
-                  designed to preserve every aroma and note.
+                  freshness. Expect fast and reliable shipping designed to
+                  preserve every aroma and note.
                 </p>
               </div>
             </div>

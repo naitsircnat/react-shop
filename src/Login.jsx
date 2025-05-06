@@ -44,7 +44,7 @@ export default function Login() {
   return (
     <>
       <div className="container my-5">
-        <p>Login form</p>
+        <h1>Log In</h1>
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}

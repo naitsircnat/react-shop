@@ -96,14 +96,18 @@ export default function NavBar() {
                   </Link>
                 </li>
               )}
-              <li className="nav-item">
-                <Link
-                  href="/cart"
-                  className={`nav-link ${location === "/cart" ? "active" : ""}`}
-                >
-                  Cart
-                </Link>
-              </li>
+              {isLoggedIn && (
+                <li className="nav-item">
+                  <Link
+                    href="/cart"
+                    className={`nav-link ${
+                      location === "/cart" ? "active" : ""
+                    }`}
+                  >
+                    Cart
+                  </Link>
+                </li>
+              )}
               {isLoggedIn && (
                 <li className="nav-item">
                   <Link

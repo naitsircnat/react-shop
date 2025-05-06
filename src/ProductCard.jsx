@@ -8,6 +8,7 @@ export default function ProductCard(props) {
   const isLoggedIn = getJwt() != null;
 
   const [location] = useLocation();
+  const [, setLocation] = useLocation();
 
   return (
     <>
@@ -21,26 +22,18 @@ export default function ProductCard(props) {
           <a
             href="#"
             className="btn btn-success"
-            onClick={() => {
-              props.handle();
-            }}
-          >
-            Add to Cart
-          </a>
-          {/* <a
-            href="#"
-            className="btn btn-success"
             onClick={
               isLoggedIn
                 ? () => {
                     props.handle();
                   }
-                : location === "/login"
+                : () => {
+                    setLocation("/login");
+                  }
             }
-          > */}
-          {/* 
+          >
             Add to cart
-          </a> */}
+          </a>
         </div>
       </div>
     </>
