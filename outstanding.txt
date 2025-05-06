@@ -1,5 +1,4 @@
 Top 3
-- Create proper success page after successful order
 - Update page title and icon
 - Use Pizza site footer
 - Check all pages for formatting and responsiveness

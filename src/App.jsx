@@ -9,6 +9,7 @@ import { useFlashMessage } from "./FlashMessageStore";
 import ShoppingCart from "./ShoppingCart.jsx";
 import Login from "./Login.jsx";
 import Profile from "./Profile.jsx";
+import Success from "./Success.jsx";
 
 export default function App() {
   const { getMessage, clearMessage } = useFlashMessage();
@@ -43,6 +44,7 @@ export default function App() {
         <Route path="/cart" component={ShoppingCart} />
         <Route path="/login" component={Login} />
         <Route path="/profile" component={Profile} />
+        <Route path="/success" component={Success} />
       </Switch>
       {/* footer */}
       <footer className="bg-dark text-white text-center py-3">
