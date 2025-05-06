@@ -6,12 +6,10 @@ import { useCart } from "./CartStore.js";
 import { useLocation } from "wouter";
 
 export default function Products() {
-  // const [products, setProducts] = useState([]);
   const [teas, setTeas] = useState([]);
   const [coffees, setCoffees] = useState([]);
 
   const { addToCart } = useCart();
-  const [setLocation] = useLocation();
   const { showMessage } = useFlashMessage();
 
   useEffect(() => {
@@ -55,7 +53,6 @@ export default function Products() {
       imageUrl: product.image,
     });
     showMessage("Item added to cart!", "success");
-    setLocation("/cart");
   };
 
   return (

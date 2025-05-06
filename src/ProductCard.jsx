@@ -1,6 +1,14 @@
 import React from "react";
+import { useJwt } from "./UserStore";
+import { Link, useLocation } from "wouter";
 
 export default function ProductCard(props) {
+  const { getJwt } = useJwt();
+
+  const isLoggedIn = getJwt() != null;
+
+  const [location] = useLocation();
+
   return (
     <>
       <div className="card">
@@ -17,8 +25,22 @@ export default function ProductCard(props) {
               props.handle();
             }}
           >
-            Add to cart
+            Add to Cart
           </a>
+          {/* <a
+            href="#"
+            className="btn btn-success"
+            onClick={
+              isLoggedIn
+                ? () => {
+                    props.handle();
+                  }
+                : location === "/login"
+            }
+          > */}
+          {/* 
+            Add to cart
+          </a> */}
         </div>
       </div>
     </>

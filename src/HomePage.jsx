@@ -37,6 +37,16 @@ export default function HomePage() {
     fetchTeas();
   }, []);
 
+  const addToCartHandle = (product) => {
+    addToCart({
+      product_id: product.id,
+      productName: product.name,
+      price: product.price,
+      imageUrl: product.image,
+    });
+    showMessage("Item added to cart!", "success");
+  };
+
   return (
     <>
       {/* hero */}
@@ -56,6 +66,9 @@ export default function HomePage() {
                 price={product.price}
                 productName={product.name}
                 productDescript={product.description}
+                handle={() => {
+                  addToCartHandle(product);
+                }}
               />
             </div>
           ))}
