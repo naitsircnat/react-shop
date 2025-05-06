@@ -1,29 +1,16 @@
 Top 3
-- Incorporate log out button
-- Update nav bar when logged in/out (and other relevant sections)
-- Show ordered items in Profile page
 - Create proper success page after successful order
 - Update page title and icon
-- Add responsiveness
+- Use Pizza site footer
+- Check all pages for formatting and responsiveness
 
 - Adjust login, register and cart position
 - Add more sections in product pages
-- Fix floating footer issue
 - Use actual cart icon 
 - Find new logo for shop
-- Add more info to footer
+- how to make images load better/faster
 
 ------
 
-Navbar updates when logged in/out
-
-control based on presence of jwt token
-
-LOGGED OUT
-add to cart - link to sign in
-
-LOGGED IN
-Navbar: 
-- register
 
 

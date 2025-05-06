@@ -1,6 +1,6 @@
 import React from "react";
 import { useJwt } from "./UserStore";
-import { Link, useLocation } from "wouter";
+import { useLocation } from "wouter";
 
 export default function ProductCard(props) {
   const { getJwt } = useJwt();

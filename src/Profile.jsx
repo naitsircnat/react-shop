@@ -95,151 +95,165 @@ export default function Profile() {
 
   return (
     <div className="container mt-5">
-      <h2>My Orders</h2>
+      <section className="container my-5">
+        <h2>My Orders</h2>
 
-      {orders.map((order) => (
-        <div>
-          <p>{order.id}</p>
-          <p>{order.status}</p>
-          <p>{order.total}</p>
+        <div className="row text-center fw-bold">
+          <div className="col-12 col-md-2 border p-2">Order ID</div>
+          <div className="col-12 col-md-2 border p-2">Product</div>
+          <div className="col-12 col-md-2 border p-2">Qty</div>
+          <div className="col-12 col-md-2 border p-2">Total Price ($)</div>
+          <div className="col-12 col-md-2 border p-2">Status</div>
         </div>
-      ))}
-      <h2>Edit Profile</h2>
-      <Formik
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-        onSubmit={handleSubmit}
-        enableReinitialize // Allows form to reinitialize with fetched profile data
-      >
-        {function (formik) {
-          return (
-            <Form>
-              <div className="mb-3">
-                <label htmlFor="name" className="form-label">
-                  Name
-                </label>
-                <Field
-                  type="text"
-                  id="name"
-                  name="name"
-                  className="form-control"
-                />
-                <ErrorMessage
-                  name="name"
-                  component="div"
-                  className="text-danger"
-                />
-              </div>
 
-              <div className="mb-3">
-                <label htmlFor="email" className="form-label">
-                  Email
-                </label>
-                <Field
-                  type="email"
-                  id="email"
-                  name="email"
-                  className="form-control"
-                />
-                <ErrorMessage
-                  name="email"
-                  component="div"
-                  className="text-danger"
-                />
-              </div>
+        {orders.map((order, index) => (
+          <div className="row text-center" key={index}>
+            <div className="col-12 col-md-2 border p-2">{order.id}</div>
+            <div className="col-12 col-md-2 border p-2">{order.name}</div>
+            <div className="col-12 col-md-2 border p-2">{order.quantity}</div>
+            <div className="col-12 col-md-2 border p-2">{order.total}</div>
+            <div className="col-12 col-md-2 border p-2">{order.status}</div>
+          </div>
+        ))}
+      </section>
 
-              <div className="mb-3">
-                <label htmlFor="salutation" className="form-label">
-                  Salutation
-                </label>
-                <Field
-                  as="select"
-                  id="salutation"
-                  name="salutation"
-                  className="form-control"
+      <section className="container my-5">
+        <h2>Edit Profile</h2>
+        <Formik
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          onSubmit={handleSubmit}
+          enableReinitialize // Allows form to reinitialize with fetched profile data
+        >
+          {function (formik) {
+            return (
+              <Form>
+                <div className="mb-3">
+                  <label htmlFor="name" className="form-label">
+                    Name
+                  </label>
+                  <Field
+                    type="text"
+                    id="name"
+                    name="name"
+                    className="form-control"
+                  />
+                  <ErrorMessage
+                    name="name"
+                    component="div"
+                    className="text-danger"
+                  />
+                </div>
+
+                <div className="mb-3">
+                  <label htmlFor="email" className="form-label">
+                    Email
+                  </label>
+                  <Field
+                    type="email"
+                    id="email"
+                    name="email"
+                    className="form-control"
+                  />
+                  <ErrorMessage
+                    name="email"
+                    component="div"
+                    className="text-danger"
+                  />
+                </div>
+
+                <div className="mb-3">
+                  <label htmlFor="salutation" className="form-label">
+                    Salutation
+                  </label>
+                  <Field
+                    as="select"
+                    id="salutation"
+                    name="salutation"
+                    className="form-control"
+                  >
+                    <option value="">Select</option>
+                    <option value="Mr">Mr.</option>
+                    <option value="Ms">Ms.</option>
+                    <option value="Mrs">Mrs.</option>
+                    <option value="Dr">Dr.</option>
+                  </Field>
+                  <ErrorMessage
+                    name="salutation"
+                    component="div"
+                    className="text-danger"
+                  />
+                </div>
+
+                <div className="mb-3">
+                  <label htmlFor="marketingPreferences" className="form-label">
+                    Marketing Preferences
+                  </label>
+                  <Field
+                    as="select"
+                    id="marketingPreferences"
+                    name="marketingPreferences"
+                    multiple
+                    className="form-control"
+                  >
+                    <option value="email">Email</option>
+                    <option value="sms">SMS</option>
+                  </Field>
+                  <ErrorMessage
+                    name="marketingPreferences"
+                    component="div"
+                    className="text-danger"
+                  />
+                </div>
+
+                <div className="mb-3">
+                  <label htmlFor="country" className="form-label">
+                    Country
+                  </label>
+                  <Field
+                    as="select"
+                    className="form-select"
+                    id="country"
+                    name="country"
+                  >
+                    <option value="">Select Country</option>
+                    <option value="sg">Singapore</option>
+                    <option value="my">Malaysia</option>
+                    <option value="in">Indonesia</option>
+                    <option value="th">Thailand</option>
+                  </Field>
+                  <ErrorMessage
+                    name="country"
+                    component="div"
+                    className="text-danger"
+                  />
+                </div>
+
+                {formik.errors.submit && (
+                  <div className="alert alert-danger">
+                    {formik.errors.submit}
+                  </div>
+                )}
+
+                <button
+                  type="submit"
+                  className="btn btn-primary"
+                  disabled={formik.isSubmitting}
                 >
-                  <option value="">Select</option>
-                  <option value="Mr">Mr.</option>
-                  <option value="Ms">Ms.</option>
-                  <option value="Mrs">Mrs.</option>
-                  <option value="Dr">Dr.</option>
-                </Field>
-                <ErrorMessage
-                  name="salutation"
-                  component="div"
-                  className="text-danger"
-                />
-              </div>
+                  {formik.isSubmitting ? "Updating..." : "Update Profile"}
+                </button>
+              </Form>
+            );
+          }}
+        </Formik>
+      </section>
 
-              <div className="mb-3">
-                <label htmlFor="marketingPreferences" className="form-label">
-                  Marketing Preferences
-                </label>
-                <Field
-                  as="select"
-                  id="marketingPreferences"
-                  name="marketingPreferences"
-                  multiple
-                  className="form-control"
-                >
-                  <option value="email">Email</option>
-                  <option value="sms">SMS</option>
-                </Field>
-                <ErrorMessage
-                  name="marketingPreferences"
-                  component="div"
-                  className="text-danger"
-                />
-              </div>
-
-              <div className="mb-3">
-                <label htmlFor="country" className="form-label">
-                  Country
-                </label>
-                <Field
-                  as="select"
-                  className="form-select"
-                  id="country"
-                  name="country"
-                >
-                  <option value="">Select Country</option>
-                  <option value="sg">Singapore</option>
-                  <option value="my">Malaysia</option>
-                  <option value="in">Indonesia</option>
-                  <option value="th">Thailand</option>
-                </Field>
-                <ErrorMessage
-                  name="country"
-                  component="div"
-                  className="text-danger"
-                />
-              </div>
-
-              {formik.errors.submit && (
-                <div className="alert alert-danger">{formik.errors.submit}</div>
-              )}
-
-              <button
-                type="submit"
-                className="btn btn-primary"
-                disabled={formik.isSubmitting}
-              >
-                {formik.isSubmitting ? "Updating..." : "Update Profile"}
-              </button>
-            </Form>
-          );
-        }}
-      </Formik>
-      <h2>Delete Account</h2>
-      <button className="btn btn-danger" onClick={handleDeleteAccount}>
-        Delete Account
-      </button>
+      <section className="container my-5">
+        <h2>Delete Account</h2>
+        <button className="btn btn-danger" onClick={handleDeleteAccount}>
+          Delete Account
+        </button>
+      </section>
     </div>
   );
 }
-
-/*
-How to show orders made
-For each order, to display
-- order id, order date/time, status, total
-*/
