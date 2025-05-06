@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ProductCard from "./ProductCard.jsx";
 import axios from "axios";
-import { Link, useLocation } from "wouter";
+import { Link } from "wouter";
 
 export default function HomePage() {
   const [featuredTeas, setFeaturedTeas] = useState([]);

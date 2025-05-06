@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "wouter";
+import { useJwt } from "./UserStore";
 
 export default function NavBar() {
   const [isNavBarShowing, setNavBarShowing] = useState(false);
@@ -9,6 +10,11 @@ export default function NavBar() {
   };
 
   const [location] = useLocation();
+
+  const { clearJwt } = useJwt();
+  const { getJwt } = useJwt();
+
+  const isLoggedIn = getJwt() != null;
 
   return (
     <>
@@ -53,46 +59,43 @@ export default function NavBar() {
                   Products
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link
-                  className={`nav-link ${
-                    location === "/register" ? "active" : ""
-                  }`}
-                  href="/register"
-                >
-                  Register
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link
-                  className={`nav-link ${
-                    location === "/login" ? "active" : ""
-                  }`}
-                  href="/login"
-                >
-                  Log In
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link
-                  className={`nav-link ${
-                    location === "/login" ? "active" : ""
-                  }`}
-                  href="/login"
-                >
-                  Log Out
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link
-                  href="/profile"
-                  className={`nav-link ${
-                    location === "/profile" ? "active" : ""
-                  }`}
-                >
-                  Profile
-                </Link>
-              </li>
+              {!isLoggedIn && (
+                <li className="nav-item">
+                  <Link
+                    className={`nav-link ${
+                      location === "/register" ? "active" : ""
+                    }`}
+                    href="/register"
+                  >
+                    Register
+                  </Link>
+                </li>
+              )}
+              {!isLoggedIn && (
+                <li className="nav-item">
+                  <Link
+                    className={`nav-link ${
+                      location === "/login" ? "active" : ""
+                    }`}
+                    href="/login"
+                  >
+                    Log In
+                  </Link>
+                </li>
+              )}
+
+              {isLoggedIn && (
+                <li className="nav-item">
+                  <Link
+                    href="/profile"
+                    className={`nav-link ${
+                      location === "/profile" ? "active" : ""
+                    }`}
+                  >
+                    Profile
+                  </Link>
+                </li>
+              )}
               <li className="nav-item">
                 <Link
                   href="/cart"
@@ -101,6 +104,16 @@ export default function NavBar() {
                   Cart
                 </Link>
               </li>
+              {isLoggedIn && (
+                <li className="nav-item">
+                  <Link
+                    style={{ textDecoration: "none", color: "inherit" }}
+                    onClick={clearJwt}
+                  >
+                    Log Out
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
         </div>

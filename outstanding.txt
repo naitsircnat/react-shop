@@ -20,11 +20,10 @@ Navbar updates when logged in/out
 control based on presence of jwt token
 
 LOGGED OUT
-Navbar: 
-- profile
+add to cart - link to sign in
 
 LOGGED IN
 Navbar: 
-+ log out
-- log in
 - register
+
+
