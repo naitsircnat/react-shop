@@ -2,6 +2,7 @@ Top 3
 - Update page title and icon
 - Use Pizza site footer
 - Check all pages for formatting and responsiveness
+- Cancel page
 
 - Adjust login, register and cart position
 - Add more sections in product pages
