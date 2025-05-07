@@ -1,12 +1,12 @@
 #hero {
-  background-image: url("home/cta1.jpg");
+  background-image: url("./home/cta1.jpg");
   background-size: cover;
   background-position: center;
   height: 65vh;
   color: white;
 }
 #cta {
-  background-image: url("home/cta2.jpg");
+  background-image: url("./home/cta2.jpg");
   background-size: cover;
   background-position: center;
   height: 55vh;
@@ -14,7 +14,7 @@
 }
 
 #products-hero {
-  background-image: url("products/hero.jpg");
+  background-image: url("./products/hero.jpg");
   background-size: cover;
   background-position: center;
   height: 65vh;
