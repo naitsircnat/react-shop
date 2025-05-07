@@ -10,6 +10,7 @@ import ShoppingCart from "./ShoppingCart.jsx";
 import Login from "./Login.jsx";
 import Profile from "./Profile.jsx";
 import Success from "./Success.jsx";
+import Footer from "./Footer.jsx";
 
 export default function App() {
   const { getMessage, clearMessage } = useFlashMessage();
@@ -47,11 +48,7 @@ export default function App() {
         <Route path="/success" component={Success} />
       </Switch>
       {/* footer */}
-      <footer className="bg-dark text-white text-center py-3">
-        <div className="container">
-          <p>&copy; 2025 The Artisan Cup. All rights reserved.</p>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 }

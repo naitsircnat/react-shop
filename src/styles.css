@@ -20,3 +20,69 @@
   height: 65vh;
   color: white;
 }
+
+/* footer */
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.footer-subtitle {
+  font-weight: 600;
+}
+
+footer p {
+  font-size: 12px;
+  font-weight: 100;
+  color: white;
+  text-align: center;
+}
+
+.row1 {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+footer a {
+  color: white;
+  text-decoration: none;
+}
+
+.socials {
+  display: flex;
+  gap: 5px;
+}
+
+@media screen and (min-width: 768px) {
+  footer {
+    height: 280px;
+    gap: 36px;
+  }
+
+  footer p {
+    text-align: left;
+  }
+
+  .row1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 200px;
+  }
+
+  .about,
+  .quicklinks,
+  .contact {
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+
+  .about {
+    flex-basis: 200px;
+    max-width: 400px;
+  }
+}
