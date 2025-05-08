@@ -110,10 +110,7 @@ export default function NavBar() {
               )}
               {isLoggedIn && (
                 <li className="nav-item">
-                  <Link
-                    style={{ textDecoration: "none", color: "inherit" }}
-                    onClick={clearJwt}
-                  >
+                  <Link className="nav-link" onClick={clearJwt}>
                     Log Out
                   </Link>
                 </li>
