@@ -29,16 +29,8 @@ const ShoppingCart = () => {
     }
   };
 
-  /*
-  - image
-  - product name
-  - Quantity and adjustments
-  - Total Price
-  - Delete button
-  */
-
   return (
-    <div className="container mt-4">
+    <div className="container mt-4" style={{ minHeight: "60vh" }}>
       <h2>My Cart</h2>
       {cart.length === 0 ? (
         <p>Your cart is empty.</p>
