@@ -43,7 +43,7 @@ export default function Login() {
 
   return (
     <>
-      <div className="container my-5">
+      <div className="container my-5" style={{ minHeight: "50vh" }}>
         <h1>Log In</h1>
         <Formik
           initialValues={initialValues}

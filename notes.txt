@@ -1,5 +1,6 @@
 Top 3
 - Check all pages for formatting and responsiveness
+- fix floating footer issue for log in and register
 
 - Adjust login, register and cart position
 - how to make images load better/faster
@@ -8,6 +9,7 @@ Top 3
 - how to make page not scroll up after adding item to cart
 - adjust mobile layout for orders section in Profile
 - adjust product page hero image cup positioning
+- add order date to Profile My Orders
 
 ------
 

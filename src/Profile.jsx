@@ -100,6 +100,7 @@ export default function Profile() {
 
         <div className="row text-center fw-bold">
           <div className="col-12 col-md-2 border p-2">Order ID</div>
+
           <div className="col-12 col-md-2 border p-2">Product</div>
           <div className="col-12 col-md-2 border p-2">Qty</div>
           <div className="col-12 col-md-2 border p-2">Total Price ($)</div>
