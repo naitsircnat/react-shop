@@ -56,7 +56,7 @@ export default function NavBar() {
                   }`}
                   href="/products"
                 >
-                  Products
+                  Shop
                 </Link>
               </li>
               {!isLoggedIn && (

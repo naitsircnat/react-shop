@@ -47,13 +47,13 @@ const ShoppingCart = () => {
           <ul className="list-group">
             {cart.map((item, index) => (
               <div className="row text-center" key={index}>
-                <div className="col-12 col-md-4 border p-2">
+                <div className="col-12 col-md-3 border p-2">
                   <img src={item.imageUrl} className="img-fluid" />
                 </div>
                 <div className="d-flex align-items-center justify-content-center col-12 col-md-2 border p-2">
                   {item.productName}
                 </div>
-                <div className="d-flex align-items-center justify-content-center col-12 col-md-2 border p-2">
+                <div className="d-flex align-items-center justify-content-center col-12 col-md-3 border p-2">
                   <button
                     className="btn btn-sm btn-secondary me-2"
                     onClick={() => {
