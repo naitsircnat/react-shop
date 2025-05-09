@@ -1,14 +1,14 @@
 Top 3
+- cart floating footer
+- favicon
+- page icon
 - Check all pages for formatting and responsiveness
-- Cancel page
-
+- how to make page not scroll up after adding item to cart
 
 - Adjust login, register and cart position
-- Add more sections in product pages
 - Use actual cart icon 
 - Find new logo for shop
 - how to make images load better/faster
 
 ------
 
-testing

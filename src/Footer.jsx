@@ -26,7 +26,7 @@ export default function Footer() {
           <div class="contact">
             <p class="footer-subtitle">CONTACT</p>
             <p>
-              <a href="#">fur-real@pizza.com</a>
+              <a href="#">hello@artisancup.com</a>
             </p>
             <p>+65 1234 5678</p>
           </div>
