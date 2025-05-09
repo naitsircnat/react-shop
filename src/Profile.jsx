@@ -251,7 +251,7 @@ export default function Profile() {
       <section className="container my-5">
         <h2>Delete Account</h2>
         <button className="btn btn-danger" onClick={handleDeleteAccount}>
-          Delete Account
+          Confirm Deletion
         </button>
       </section>
     </div>
