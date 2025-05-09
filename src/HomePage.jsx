@@ -79,7 +79,6 @@ export default function HomePage() {
           ))}
         </div>
       </section>
-
       {/* Teas */}
       <section className="container my-5 px-lg-1">
         <h2>Featured Teas</h2>
@@ -100,7 +99,6 @@ export default function HomePage() {
           ))}
         </div>
       </section>
-
       {/* Why us */}
       <section className="container my-5">
         <h2>Why Customers Love Us</h2>
@@ -149,7 +147,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
       {/* CTA */}
       <section id="cta" class="container-fluid mt-5 p-4">
         <h2 className="display-5">Find Your Perfect Brew</h2>
