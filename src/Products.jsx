@@ -63,7 +63,7 @@ export default function Products() {
 
       <section>
         <div className="container my-5">
-          <h1>Our Coffees</h1>
+          <h2>Our Coffees</h2>
           <div className="row gy-3">
             {coffees.map((product) => (
               <div key={product.id} className="col-12 col-md-6 col-lg-3">
@@ -84,7 +84,7 @@ export default function Products() {
 
       <section>
         <div className="container my-5">
-          <h1>Our Teas</h1>
+          <h2>Our Teas</h2>
           <div className="row gy-3">
             {teas.map((product) => (
               <div key={product.id} className="col-12 col-md-6 col-lg-3">
