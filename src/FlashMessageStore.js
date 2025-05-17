@@ -1,10 +1,3 @@
-/*
-- imports
-- create atom
-- create custom hook - get, return, show
-- return functions 
-*/
-
 import { atom, useAtom } from "jotai";
 
 export const flashMessageAtom = atom({

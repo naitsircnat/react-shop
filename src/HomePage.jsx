@@ -147,16 +147,12 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-      {/* CTA */}
       <section id="cta" class="container-fluid mt-5 p-4">
         <h2 className="display-5">Find Your Perfect Brew</h2>
         <p className="lead">
           Whether you're craving bold coffee or soothing tea, explore our
           curated collection and discover your new daily ritual.
         </p>
-        {/* <Link className="navbar-brand" href="/">
-                    The Artisan Cup
-                  </Link> */}
         <Link href="products">
           <button type="button" className="btn btn-success">
             {" "}
